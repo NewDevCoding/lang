@@ -59,7 +59,7 @@ const LogOutIcon = () => (
 /* ---------------- Dashboard Component ---------------- */
 export default function Dashboard() {
   return (
-    <div className="flex min-h-screen bg-gray-50 text-gray-900">
+    <div className="flex h-screen bg-gray-50 text-gray-900">
       {/* LEFT SIDEBAR */}
       <aside className="w-64 bg-gray-200 p-5 flex flex-col justify-between">
         <div>
@@ -199,3 +199,13 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
+
+    
+   
+   
+ 
+    
+  
+  
