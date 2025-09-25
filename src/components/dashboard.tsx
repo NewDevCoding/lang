@@ -1,60 +1,15 @@
 // Dashboard.jsx
 import React from "react";
-
-/* --- Tiny inline SVG icons (self-contained, accessible) --- */
-const Icon = ({ children }: { children: React.ReactNode }) => (
-  <svg
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    fill="none"
-    aria-hidden="true"
-    className="inline-block"
-  >
-    {children}
-  </svg>
-);
-
-const HomeIcon = () => (
-  <Icon>
-    <path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V11.5z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-  </Icon>
-);
-
-const HeartIcon = () => (
-  <Icon>
-    <path d="M20.8 7.3a4.9 4.9 0 0 0-6.9 0L12 9.2l-1.9-1.9a4.9 4.9 0 0 0-6.9 6.9L12 21l8.8-6.8a4.9 4.9 0 0 0 0-6.9z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-  </Icon>
-);
-
-const TrophyIcon = () => (
-  <Icon>
-    <path d="M8 4h8v3a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V4zM6 5H4a1 1 0 0 0-1 1v2a4 4 0 0 0 4 4h0M18 5h2a1 1 0 0 1 1 1v2a4 4 0 0 1-4 4h0" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M12 14v6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
-  </Icon>
-);
-
-const UserIcon = () => (
-  <Icon>
-    <path d="M20 21v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    <circle cx="12" cy="7" r="4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-  </Icon>
-);
-
-const SettingsIcon = () => (
-  <Icon>
-    <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M19.4 15a1 1 0 0 0 .2 1.1l.05.05a2 2 0 0 1-2.8 2.8l-.05-.05a1 1 0 0 0-1.1-.2 7 7 0 0 1-2.5.6 7 7 0 0 1-2.5-.6 1 1 0 0 0-1.1.2l-.05.05a2 2 0 0 1-2.8-2.8l.05-.05a1 1 0 0 0 .2-1.1 7 7 0 0 1-.6-2.5 7 7 0 0 1 .6-2.5 1 1 0 0 0-.2-1.1l-.05-.05a2 2 0 0 1 2.8-2.8l.05.05a1 1 0 0 0 1.1.2 7 7 0 0 1 2.5-.6 7 7 0 0 1 2.5.6 1 1 0 0 0 1.1-.2l.05-.05a2 2 0 0 1 2.8 2.8l-.05.05a1 1 0 0 0-.2 1.1 7 7 0 0 1 .6 2.5 7 7 0 0 1-.6 2.5z" stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" strokeLinejoin="round"/>
-  </Icon>
-);
-
-const LogOutIcon = () => (
-  <Icon>
-    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M16 17l5-5-5-5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M21 12H9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-  </Icon>
-);
+import DashboardItem from "./sidebar/DashboardItem";
+import PracticeItem from "./sidebar/PracticeItem";
+import AchievementsItem from "./sidebar/AchievementItem";
+import ProfileItem from "./sidebar/ProfileItem";
+import SettingsItem from "./sidebar/SettingsItem";
+import LogoutItem from "./sidebar/LogoutItem";
+import ReadingActivity from "./activities/ReadingActivity";
+import ListeningActivity from "./activities/ListeningActivity";
+import GrammarActivity from "./activities/GrammarActivity";
+import SkillReviewActivity from "./activities/SkillReviewActiviy";
 
 /* ---------------- Dashboard Component ---------------- */
 export default function Dashboard() {
@@ -72,31 +27,16 @@ export default function Dashboard() {
           </div>
 
           <nav className="space-y-3">
-            <button className="flex items-center w-full px-4 py-3 bg-white rounded-xl shadow">
-              <HomeIcon /> <span className="ml-3 font-medium">Dashboard</span>
-            </button>
-
-            <button className="flex items-center w-full px-4 py-3 rounded-xl hover:bg-gray-300">
-              <HeartIcon /> <span className="ml-3">Practice</span>
-            </button>
-
-            <button className="flex items-center w-full px-4 py-3 rounded-xl hover:bg-gray-300">
-              <TrophyIcon /> <span className="ml-3">Achievements</span>
-            </button>
-
-            <button className="flex items-center w-full px-4 py-3 rounded-xl hover:bg-gray-300">
-              <UserIcon /> <span className="ml-3">My Profile</span>
-            </button>
+            <DashboardItem />
+            <PracticeItem />
+            <AchievementsItem />
+            <ProfileItem />
           </nav>
         </div>
 
         <div className="space-y-3">
-          <button className="flex items-center w-full px-4 py-3 rounded-xl hover:bg-gray-300">
-            <SettingsIcon /> <span className="ml-3">Settings</span>
-          </button>
-          <button className="flex items-center w-full px-4 py-3 rounded-xl hover:bg-gray-300">
-            <LogOutIcon /> <span className="ml-3">Logout</span>
-          </button>
+          <SettingsItem />
+          <LogoutItem />
         </div>
       </aside>
 
@@ -152,12 +92,10 @@ export default function Dashboard() {
         <section>
           <h3 className="font-semibold mb-3">Activities</h3>
           <div className="flex items-center space-x-6">
-            {["Reading","Listening","Grammar","Skill Review"].map((a) => (
-              <div key={a} className="flex flex-col items-center">
-                <div className="h-16 w-16 rounded-full bg-gray-300 flex items-center justify-center">●</div>
-                <div className="text-sm mt-2">{a}</div>
-              </div>
-            ))}
+            <ReadingActivity />
+            <ListeningActivity />
+            <GrammarActivity />
+            <SkillReviewActivity />
           </div>
         </section>
       </main>
